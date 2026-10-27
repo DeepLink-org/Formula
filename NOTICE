@@ -1,0 +1,81 @@
+pVisor
+==========
+
+Copyright 2026 pVisor contributors.
+
+pVisor first-party source code is licensed under the Apache License,
+Version 2.0. See the repository root `LICENSE` file.
+
+Third-party notices
+===================
+
+fuser
+-----
+
+`vendor/fuser` contains a modified copy of the fuser project:
+
+https://github.com/cberner/fuser
+
+Copyright its authors and contributors. It is distributed under the MIT
+License; see `vendor/fuser/LICENSE.md`.
+
+libkrun runtime components
+--------------------------
+
+`crates/pvisor-vm/src/` contains consolidated, modified libkrun 1.19.3
+VMM, device, architecture, HVF and supporting modules. Original manifests and
+synchronization records are retained in `crates/pvisor-vm/provenance/`:
+
+https://github.com/containers/libkrun
+
+Copyright Red Hat, Inc. and the upstream authors and contributors. They are
+distributed under the Apache License, Version 2.0. pVisor's modifications
+add the mountless copy-on-write virtio-fs backend used by pVisor and embed
+the first-party Rust guest supervisor from `crates/pvisor-guest`.
+
+libkrunfw guest firmware
+-----------------------
+
+`fw/` contains a modified copy of libkrunfw, including pVisor's guest kernel
+configurations, patches and compact firmware storage generator:
+
+https://github.com/libkrun/libkrunfw
+
+Source identity and imported local modifications are recorded in `fw/IMPORT.md`.
+The Linux kernel and kernel patches are GPL-2.0-only; the library code,
+including generated library code, is LGPL-2.1-only. See
+`fw/LICENSE-GPL-2.0-only` and `fw/LICENSE-LGPL-2.1-only`.
+The macOS compatibility headers have separate terms in
+`fw/include/macos-host/LICENSE`.
+
+Firmware binary distributions must include the corresponding source and
+license materials. These components are not covered by the repository's
+first-party Apache-2.0 license.
+
+agentgateway test fixtures
+--------------------------
+
+Regression fixtures under `crates/pvisor-gateway/tests/fixtures/` may
+include materials originally published under Apache-2.0 by the agentgateway
+project. Those files remain under their upstream Apache-2.0 terms as noted in
+`crates/pvisor-gateway/tests/fixtures/README.md`.
+
+dldb
+----
+
+The standalone Python package named `dldb` is distributed under
+its existing MIT license declaration and is excluded from the main pVisor
+Python wheel. Its package metadata identifies its original author.
+
+Podman test suites
+------------------
+
+`tests/podman/upstream/` contains copies of Podman's system and CLI integration
+tests at revision 3279be7b55b1b91741e61147b84f8ce3971c1c3d:
+
+https://github.com/podman-container-tools/podman
+
+Copyright the upstream Podman authors and contributors. Distributed under the
+Apache License, Version 2.0; see `tests/podman/upstream/LICENSE`. Selected scenarios
+are adapted for pVisor's top-level container commands under `tests/podman/system/` and
+`tests/podman/e2e/`. See `tests/podman/UPSTREAM.md` for provenance and changes.
